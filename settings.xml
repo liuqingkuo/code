@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+	<!--<localRepository>E:\Maven\peDependencies</localRepository>-->
+	<localRepository>X:\repository</localRepository>
+	<interactiveMode>true</interactiveMode>
+	<offline>false</offline>
+	<pluginGroups>
+		<pluginGroup>org.mortbay.jetty</pluginGroup>
+		<pluginGroup>org.jenkins-ci.tools</pluginGroup>
+	</pluginGroups>
+	<servers>
+		<!-- 本地私服 -->
+		<!-- <server>
+			<id>wujiang-repository</id>
+			<username>admin</username>
+			<password>admin123</password>
+		</server> -->
+		
+		<server>
+			<id>wujiang-Releases</id>
+			<username>admin</username>
+			<password>admin123</password>
+		</server>
+		
+		<server>
+			<id>wujiang-Snapshot</id>
+			<username>admin</username>
+			<password>admin123</password>
+		</server>
+	</servers>
+	
+	
+<mirrors>
+    <mirror>
+      <id>Public Repositories</id>
+      <name>Public Repositories</name>
+      <mirrorOf>central</mirrorOf>
+      <url>http://192.168.88.100:9002/nexus/content/repositories/csii-proxyaliyun-release/</url>
+    </mirror>	
+  </mirrors>
+  
+  
+	<!-- <mirrors> <mirror> <id>alimaven</id> <name>aliyun maven</name> <url>http://maven.aliyun.com/nexus/content/groups/public</url> 
+		<mirrorOf>central</mirrorOf> </mirror> <mirror> <id>nexus</id> <mirrorOf>*</mirrorOf> 
+		<name>Nexus Mirror.</name> <url>http://118.242.36.102:35678/nexus/content/groups/public/</url> 
+		</mirror> <mirror> <id>repo1</id> <mirrorOf>central</mirrorOf> <name>Human 
+		Readable Name for this Mirror.</name> <url>http://repo1.maven.org/maven2/</url> 
+		</mirror> </mirrors> -->
+	<profiles>
+		<!--本地私服地址  -->
+		<!--  
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<repositories>	
+				<repository>
+					<id>wujiang-repository</id>
+					<name>Spring Snapshots</name>
+					<url>http://localhost:8081/repository/wujiang-group/</url>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>  -->
+				
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<repositories>	
+				
+				<repository>
+					<id>wujiang-Releases</id>
+					<name>wujiang-Releases</name>
+					<url>http://192.168.88.100:9002/nexus/content/repositories/wujiang-Releases/</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+				</repository>
+				
+				
+				<repository>
+					<id>wujiang-Snapshot</id>
+					<name>wujiang-Snapshot</name>
+					<url>http://192.168.88.100:9002/nexus/content/repositories/wujiang-Snapshot/</url>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+				</repository> 
+
+     <repository>
+					<id>Public Repositories</id>
+					<name>Public Repositories</name>
+					<url>http://192.168.88.100:9002/nexus/content/groups/wujiang-group/</url>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+				</repository> 
+			</repositories>
+			
+			
+			<pluginRepositories>
+        <pluginRepository>
+          <id>Public Repositories</id>
+          <name>Public Repositories</name>
+          <url>http://192.168.88.100:9002/nexus/content/groups/wujiang-group/</url>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+        </pluginRepository>
+      </pluginRepositories>
+		</profile>
+		
+	</profiles>
+	
+	
+	<activeProfiles>
+		<activeProfile>development</activeProfile>
+	</activeProfiles>
+</settings>
